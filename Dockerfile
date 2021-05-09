@@ -16,13 +16,13 @@
 # specific language governing permissions and limitations
 # under the License.
 #
-FROM openjdk:8-jdk-alpine AS builder
+FROM openjdk:17-jdk-alpine AS builder
 RUN mkdir builddir
 COPY . builddir
 WORKDIR builddir
 RUN ./gradlew publishToMavenLocal
 
-FROM openjdk:8-jdk-alpine AS runner
+FROM openjdk:17-jdk-alpine AS runner
 
 ARG payroll_port=2030
 
